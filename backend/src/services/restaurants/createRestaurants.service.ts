@@ -1,27 +1,44 @@
-import { AppDataSource } from "../../data-source"
-import { OperatingTime } from "../../entities/operatingTime.etity"
-import { Restaurant } from "../../entities/restaurants.entity"
+import { DeepPartial } from "typeorm";
+import { AppDataSource } from "../../data-source";
+import { OperatingTime } from "../../entities/operatingTime.entity";
+import { Restaurant } from "../../entities/restaurants.entity";
 
+interface IRestaurantRequest {
+    name: string
+    cnpj: string
+    type: string
+    operatingTimes: {
+        dayOfWeek: string
+        openingTime: string
+        closingTime: string
+    }
 
-export const createRestaurantService = async (restaurantData: any, operatingTimeData: any): Promise<any> => {
+}
+
+interface ITimesRequest {
+    dayOfWeek: string
+    openingTime: string
+    closingTime: string
+}
+
+export const createRestaurantService = async ({restaurantData}: any): Promise<any> => {
 
     const restaurantRepository = AppDataSource.getRepository(Restaurant)
     const operatingTimeRepository = AppDataSource.getRepository(OperatingTime)
 
-    const operatingTime = operatingTimeRepository.create({
-        dayOfWeek: operatingTimeData.dayOfWeek,
-        openingTime: operatingTimeData.openingTime,
-        closingTime: operatingTimeData.closingTime
-    })
-
-    await operatingTimeRepository.save(operatingTime)
-
     const restaurant = restaurantRepository.create({
-        ...restaurantData,
-        operatingTime: operatingTime
+        name: restaurantData.name,
+        cnpj: restaurantData.cnpj,
+        type: restaurantData.type,
     })
 
-    await restaurantRepository.save(restaurant)
+    await restaurantRepository.save(restaurant);
 
-    return restaurant
+    restaurantData.operatingTimes.map(async(elem: ITimesRequest) => {
+        let times = operatingTimeRepository.create(elem)
+        times.restaurant = restaurant
+        await operatingTimeRepository.save(times)
+        })
+
+return restaurant
 }

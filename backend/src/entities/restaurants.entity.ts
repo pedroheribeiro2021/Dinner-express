@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
-import { OperatingTime } from "./operatingTime.etity";
+import { OperatingTime } from "./operatingTime.entity";
 
-@Entity()
+@Entity('restaurants')
 export class Restaurant {
     @PrimaryGeneratedColumn('uuid')
     id: string
@@ -15,6 +15,6 @@ export class Restaurant {
     @Column()
     type: string
 
-    @OneToMany(() => OperatingTime, operatingTime => operatingTime.restaurant)
-    operatingTime: OperatingTime[];
+    @OneToMany(() => OperatingTime, (operatingTimes) => operatingTimes.restaurant)
+    operatingTimes: OperatingTime[]
 }

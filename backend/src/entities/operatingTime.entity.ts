@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from "typeorm";
 import { Restaurant } from "./restaurants.entity";
 
-@Entity()
+@Entity('operatingTimes')
 export class OperatingTime {
     @PrimaryGeneratedColumn('uuid')
     id: string
@@ -15,7 +15,7 @@ export class OperatingTime {
     @Column({ type: 'time' })
     closingTime: string
 
-    @ManyToOne(() => Restaurant, restaurant => restaurant.operatingTime, {
+    @ManyToOne(() => Restaurant, restaurant => restaurant.operatingTimes, {
         onDelete: "CASCADE",
     })
     @JoinColumn()
