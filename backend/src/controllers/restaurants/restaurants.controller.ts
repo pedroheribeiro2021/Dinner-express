@@ -3,6 +3,7 @@ import { createRestaurantService } from "../../services/restaurants/createRestau
 import { listRestaurantService } from "../../services/restaurants/listRestaurants.service";
 import { updateRestaurantService } from "../../services/restaurants/updateRestaurants.service";
 import { deleteRestaurantService } from "../../services/restaurants/deleteRestaurants.service";
+import { isOpenService } from "../../services/restaurants/isOpen.service";
 
 export const createRestaurantsController = async (req: Request, res: Response) => {
     const restaurantData = req.body
@@ -17,13 +18,21 @@ export const listRestaurantsController = async (req: Request, res: Response) => 
 
 export const updateRestaurantsController = async (req: Request, res: Response) => {
     const restaurantData = req.body
-    const restaurantId: string = req.params.id;
+    const restaurantId: string = req.params.id
     const body = await updateRestaurantService(restaurantData, restaurantId)
     return res.status(201).json(body)
 }
 
 export const deleteRestaurantsController = async (req: Request, res: Response) => {
-    const restaurantId: string = req.params.id;
+    const restaurantId: string = req.params.id
     await deleteRestaurantService(restaurantId)
     return res.status(204).send()
+}
+
+export const isOpenController = async (req: Request, res: Response) => {
+    const restaurantData = req.body
+    const restaurantId: string = req.params.id;
+    const body = await isOpenService(restaurantData)
+
+    return res.status(201).json(body)
 }
