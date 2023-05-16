@@ -1,6 +1,7 @@
 import { Request, Response } from "express"
 import { createRestaurantService } from "../../services/restaurants/createRestaurants.service";
 import { listRestaurantService } from "../../services/restaurants/listRestaurants.service";
+import { updateRestaurantService } from "../../services/restaurants/updateRestaurants.service";
 
 export const createRestaurantsController = async (req: Request, res: Response) => {
     const restaurantData = req.body
@@ -11,4 +12,11 @@ export const createRestaurantsController = async (req: Request, res: Response) =
 export const listRestaurantsController = async (req: Request, res: Response) => {
     const body = await listRestaurantService()
     return res.status(200).json(body)
+}
+
+export const updateRestaurantsController = async (req: Request, res: Response) => {
+    const restaurantData = req.body
+    const restaurantId: string = req.params.id;
+    const body = await updateRestaurantService(restaurantData, restaurantId)
+    return res.status(201).json(body)
 }

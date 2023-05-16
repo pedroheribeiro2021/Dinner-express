@@ -32,7 +32,7 @@ export const createRestaurantService = async ({restaurantData}: any): Promise<an
         type: restaurantData.type,
     })
 
-    await restaurantRepository.save(restaurant);
+    await restaurantRepository.save(restaurant)
 
     restaurantData.operatingTimes.map(async(elem: ITimesRequest) => {
         let times = operatingTimeRepository.create(elem)
