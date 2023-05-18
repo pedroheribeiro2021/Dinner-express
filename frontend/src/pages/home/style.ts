@@ -49,7 +49,6 @@ export const HomeStyle = styled.section`
             li {
                 display: flex;
                 flex-direction: column;
-                background-color: red;
 
                 .card-buttons {
                     display: flex;
@@ -63,6 +62,13 @@ export const HomeStyle = styled.section`
                 }
             }
         }
+    }
+
+    .register-restaurant {
+        position: absolute;
+        top: 50;
+        right: 90%;
+        z-index: 2; 
     }
     
     .cover {

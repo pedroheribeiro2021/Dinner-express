@@ -4,14 +4,19 @@ import './App.css';
 import { Route, Routes } from "react-router-dom";
 import { Header } from './components/header';
 import { Home } from './pages/home';
+import { Providers } from './components/providers/providers';
+import ReactModal from "react-modal";
 
 
 function App() {
+  ReactModal.setAppElement("#root");
   return (
     <main>
-      <Routes>
-        <Route path="/" element={<Home />}/>
-      </Routes>
+      <Providers>
+        <Routes>
+          <Route path="/" element={<Home />}/>
+        </Routes>
+      </Providers>
     </main>
   );
 }
