@@ -50,6 +50,16 @@ export const HomeStyle = styled.section`
                 display: flex;
                 flex-direction: column;
 
+                .operating-time {
+                    display: flex;
+                    flex-direction: column;
+
+                    /* li {
+                        display: flex;
+                        flex-direction: row;
+                    } */
+                }
+
                 .card-buttons {
                     display: flex;
                     gap: 8px;
@@ -58,7 +68,7 @@ export const HomeStyle = styled.section`
                     background-color: var(--cover);
                     border-radius: 4px;
                     padding: 4px;
-                }
+                    }
                 }
             }
         }

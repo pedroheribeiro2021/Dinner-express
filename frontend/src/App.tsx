@@ -6,6 +6,7 @@ import { Header } from './components/header';
 import { Home } from './pages/home';
 import { Providers } from './components/providers/providers';
 import ReactModal from "react-modal";
+import { IsOpenPage } from './pages/isOpenPage';
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
       <Providers>
         <Routes>
           <Route path="/" element={<Home />}/>
+          <Route path="/isopen" element={<IsOpenPage />}  />
         </Routes>
       </Providers>
     </main>

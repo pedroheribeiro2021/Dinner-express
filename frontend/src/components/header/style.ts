@@ -33,12 +33,6 @@ export const HeaderStyle = styled.header`
             align-items: center;
             border: 0.2px solid gray;
             border-radius: 4px;
-
-            input {
-                outline: none;
-                border: none;
-                padding: 0 0 0 5px;
-            }
         }
     }
 

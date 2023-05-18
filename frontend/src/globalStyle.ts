@@ -30,4 +30,10 @@ export const GlobalStyle = createGlobalStyle`
         cursor: pointer;
     }
 
+    input {
+        outline: none;
+        border: none;
+        border-radius: 4px;
+    }
+
 `

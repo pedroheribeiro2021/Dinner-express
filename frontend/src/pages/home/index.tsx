@@ -39,15 +39,26 @@ export const Home = () => {
                                 <h4>{restaurant.name}</h4>
                                 <p>{restaurant.type}</p>
                                 <h5>Horário de funcionamento:</h5>
+                                <ul className="operating-time">
                                 {
                                     restaurant.operatingTimes.map((times: any) => 
                                         (
-                                            <span>
-                                            Aberto {times.dayOfWeek} ⋅ Fecha às {times.openingTime} ⋅ Reabre às {times.closingTime}
-                                            </span>
+                                            <>
+                                            <li>
+                                               ⋅ {times.dayOfWeek}
+                                            {/* </li> */}
+                                            {/* <li> */}
+                                                ⋅ De {times.openingTime} 
+                                            {/* </li> */}
+                                            {/* <li> */}
+                                                ⋅ Às {times.closingTime}
+                                            </li>
+                                            </>
+
                                         )
                                     )
                                 }
+                                </ul>
                                 <div className="card-buttons">
                                     <button>Verificar Horários</button>
                                     <button>Entrar em contato</button>

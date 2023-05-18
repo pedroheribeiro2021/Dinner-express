@@ -32,7 +32,7 @@ export const deleteRestaurantsController = async (req: Request, res: Response) =
 export const isOpenController = async (req: Request, res: Response) => {
     const restaurantData = req.body
     const restaurantId: string = req.params.id;
-    const body = await isOpenService(restaurantData)
+    const result = await isOpenService(restaurantData)
 
-    return res.status(201).json(body)
+    res.json({ status: result })
 }

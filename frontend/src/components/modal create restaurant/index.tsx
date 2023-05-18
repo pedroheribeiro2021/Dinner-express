@@ -7,7 +7,7 @@ import { useFieldArray, useForm } from "react-hook-form";
 
 
 export const ModalCreateRestaurant = () => {
-    const { createRestaurants, getAllRestaurants } = useRestaurantContext()
+    const { createRestaurants, getAllRestaurants, weeksDay } = useRestaurantContext()
 
     const { isCreateRestaurantModalOpen, setCreateRestaurantModalOpen } = useModalContext()
 
@@ -17,7 +17,7 @@ export const ModalCreateRestaurant = () => {
         })()
       }, [])
 
-    // const [weeksDay, setWeeksDay] = useState(['segunda', 'terça', 'quarta', 'quinta', 'sexta', 'sábado', 'domingo'])
+    // const [weeksDay, setWeeksDay] = useState(['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'])
 
     // const { control, register, handleSubmit,  } = useForm();
 
@@ -75,52 +75,16 @@ export const ModalCreateRestaurant = () => {
                 <label htmlFor="">Categoria</label>
                 <input type="text" id="type" placeholder="" {...register("type")}/>
                 <label htmlFor="">Dias da semana</label>
-                {/* <select {...register("dayOfWeek")}>
-                    <option value="Segunda">Segunda</option>
-                    <option value="Segunda">Terça</option>
-                </select> */}
-                {/* {
-                    weeksDay.length > 0 ? weeksDay.map((day) => (
-                        <input type="text" value={day} {...register("dayOfWeek")}/>
-                    )) : (
-                        <></>
-                    )
-                } */}
-                {/* <label htmlFor="">Hora de abertura</label>
-                <input type="time" {...register("openingTime")}/>
-                <label htmlFor="">Hora de fechamento</label>
-                <input type="time" {...register("closingTime")}/> */}
-                {/* {[...Array(numberOfDays)].map((_, index) => 
-                ( */}
-                    {/* {
-                        weeksDay.map((el, i) => (
-                            <>                                
-                            <div className="input_modal" key={`image_${i}`}>
-                                <label htmlFor="">{el}</label>
-                                <input
-                                    type="text"
-                                    // placeholder="Link da imagem"
-                                    value={el}
-                                    {...register(`operatingTimes.dayOfWeek${i + 1}`)}
-                                />
-                                <label htmlFor="">Hora de abertura</label>
-                                <input type="time" {...register(`operatingTimes.openingTime`)}/>
-                                <label htmlFor="">Hora de fechamento</label>
-                                <input type="time" {...register("operatingTimes.closingTime")}/>
-                                </div>
-                                </>
-                            ))
-                        } */}
-
-                {/* ))} */}
                 {fields.map((field, index) => (
                 <div key={field.id} className="input_modal">
                     <label htmlFor="">Dia da semana</label>
-                    <input
-                    type="text"
-                    defaultValue={field.dayOfWeek}
-                    {...register(`operatingTimes[${index}].dayOfWeek`)}
-                    />
+                    <select {...register(`operatingTimes[${index}].dayOfWeek`)}>
+                        {
+                            weeksDay.map(el => (
+                                <option value={el}>{el}</option>
+                            ))
+                        }
+                    </select> 
                     <label htmlFor="">Hora de abertura</label>
                     <input
                     type="time"
