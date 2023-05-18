@@ -25,6 +25,7 @@ export const updateRestaurantService = async (
         type: updateRestaurantData.type,
     })
     const updateOperatingTimes = updateRestaurantData.operatingTimes
+    console.log(updateOperatingTimes)
 
     await restaurantRepository.save(updatedRestaurant)
 
