@@ -1,15 +1,14 @@
 import styled from "styled-components";
-import coverrrr from "../../assets/dinner wallpapaer.jpg"
-
 
 export const HomeStyle = styled.section`
     display: flex;
     flex-direction: column;
+    height: 100vh;
 
     h1 {
         text-align: center;
         font-size: 90px;
-        /* font-weight: bolder; */
+
     }
 
     .subtitle1 {
@@ -35,29 +34,35 @@ export const HomeStyle = styled.section`
         justify-content: center;
         align-items: center;
         position: relative;
-        /* top: 40; */
         z-index: 1;
 
         ul {
+            display: flex;
+            justify-content: center;
             position: relative; 
-            margin-top: 7%;
-            /* bottom: 50%; */
+            margin-top: 4%;
             display: flex;
             gap: 12px;
             z-index: 2; 
+            width: 80%;
             
             li {
                 display: flex;
                 flex-direction: column;
+                border-radius: 8px;
+                padding: 15px;
 
                 .operating-time {
                     display: flex;
                     flex-direction: column;
 
-                    /* li {
-                        display: flex;
-                        flex-direction: row;
-                    } */
+                    li {
+                        font-size: 12px;
+                        font-weight: bold;
+                        height: 10px;
+                        position: relative;
+                        box-shadow: none;
+                    }
                 }
 
                 .card-buttons {
@@ -65,11 +70,35 @@ export const HomeStyle = styled.section`
                     gap: 8px;
 
                     button {
-                    background-color: var(--cover);
-                    border-radius: 4px;
-                    padding: 4px;
+                        background-color: var(--cover);
+                        border-radius: 4px;
+                        padding: 4px;
+                        transition: 0.5s;
+                    }
+
+                    button:hover {
+                        background-color: gray;
+                        color: white;
+                    }
+
+                    a {
+                        background-color: var(--cover);
+                        border-radius: 4px;
+                        padding: 4px;
+                        font-size: 14px;
+                        color: black;
+                        transition: 0.5s;
+                    }
+
+                    a:hover {
+                        background-color: gray;
+                        color: white;
                     }
                 }
+            }
+
+            li:hover {
+                box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.2);
             }
         }
     }
@@ -86,9 +115,36 @@ export const HomeStyle = styled.section`
         left: 0;
         top: 0;
         width: 100vw;
-        height: 60vh;
+        height: 55vh;
         opacity: 0.5;
         z-index: 0;
     }
+
+    .restaurants-list {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  margin-top: 4%;
+  width: 80%;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  height: 100%;
+
+  &::-webkit-scrollbar {
+    height: 2px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--cover);
+    border-radius: 4px;
+  }
+
+  li {
+    border-radius: 8px;
+    padding: 15px;
+    min-width: 30%;
+  }
+}
 
 `

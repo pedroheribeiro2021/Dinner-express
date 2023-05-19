@@ -6,33 +6,31 @@ export const HeaderStyle = styled.header`
     background-color: white;
     min-height: 60px;
     padding: 0px 40px;
-    margin: 15px;
+    margin: 0 15px 0 15px;
     align-items: center;
     border: 0.5px solid var(--black1);
 
+    .logo {
+        cursor: pointer;
+    }
 
     .menu {
         display: flex;
         justify-content: space-between;
         gap: 12px;
 
-        button {
-            /* font-weight: 600;
-            transition: 0.5s; */
-        }
-
         button:hover {
-            /* font-weight: 200; */
             font-weight: 600;
-            /* transition: 0.5s; */
         }
 
         .input-place {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border: 0.2px solid gray;
+            align-content: center;
             border-radius: 4px;
+
+            
         }
     }
 

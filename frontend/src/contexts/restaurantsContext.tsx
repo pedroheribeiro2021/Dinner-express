@@ -1,7 +1,7 @@
 import { ReactNode, useContext, useState } from "react";
 import { createContext } from "react";
 import { api } from "../services/api";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 
 interface IRestaurantContext {
     getAllRestaurants: () => Promise<void>
@@ -38,23 +38,21 @@ export const RestaurantProvider = ({children}: IRestaurantProps) => {
     const createRestaurants = async (payload: any): Promise<void> => {
         try {
             const { data } = await api.post("/restaurant", payload)
-            toast.success("Anúncio criado com Sucesso")
+            toast("Restaurante criado com Sucesso")
             setRestaurants(data)
-            return data;
+            return data
           } catch (error) {
-            toast.error("Falha ao criar Anúncio")
+            toast("Falha ao criar restaurante")
           }
     }
 
     const isOpenRestaurants = async (payload: any): Promise<void> => {
       try {
           const { data } = await api.post("/isopen", payload)
-          // toast.success("Anúncio criado com Sucesso")
           setStatusRestaurant(data.status)
           console.log(data)
-          return data;
+          return data
         } catch (error) {
-          // toast.error("Falha ao criar Anúncio")
         }
   }
 

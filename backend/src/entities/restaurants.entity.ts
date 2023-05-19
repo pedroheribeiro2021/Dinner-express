@@ -15,6 +15,9 @@ export class Restaurant {
     @Column()
     type: string
 
+    @Column()
+    cellPhone: string
+
     @OneToMany(() => OperatingTime, (operatingTimes) => operatingTimes.restaurant)
     operatingTimes: OperatingTime[]
 }
