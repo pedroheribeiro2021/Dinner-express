@@ -4,7 +4,10 @@ import { Header } from "../../components/header"
 import { useRestaurantContext } from "../../contexts/restaurantsContext"
 import { HomeStyle } from "./style"
 import { ModalCreateRestaurant } from "../../components/modal create restaurant"
+<<<<<<< HEAD
 import React from "react"
+=======
+>>>>>>> f6c0f0e2d69a04a2000602ec7296241d2f54317a
 
 export const Home = () => {
     const { getAllRestaurants, restaurants } = useRestaurantContext()
