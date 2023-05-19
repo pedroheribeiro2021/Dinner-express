@@ -30,6 +30,7 @@ export const createRestaurantService = async ({restaurantData}: any): Promise<an
         name: restaurantData.name,
         cnpj: restaurantData.cnpj,
         type: restaurantData.type,
+        cellPhone: restaurantData.cellPhone
     })
 
     await restaurantRepository.save(restaurant)
