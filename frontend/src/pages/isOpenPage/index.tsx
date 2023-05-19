@@ -4,10 +4,7 @@ import { useRestaurantContext } from "../../contexts/restaurantsContext"
 import cover from "../../assets/isopencover.jpeg"
 import { IsOpenPageStyle } from "./style"
 import { useNavigate } from "react-router"
-<<<<<<< HEAD
 import React from "react"
-=======
->>>>>>> f6c0f0e2d69a04a2000602ec7296241d2f54317a
 
 
 export const IsOpenPage = () => {

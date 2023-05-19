@@ -121,30 +121,30 @@ export const HomeStyle = styled.section`
     }
 
     .restaurants-list {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  position: relative;
-  margin-top: 4%;
-  width: 80%;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  height: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        position: relative;
+        padding: 0 0 0 10%;
+        margin-top: 4%;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        height: 100%;
 
-  &::-webkit-scrollbar {
-    height: 2px;
-  }
+        &::-webkit-scrollbar {
+            height: 3px;
+        }
 
-  &::-webkit-scrollbar-thumb {
-    background-color: var(--cover);
-    border-radius: 4px;
-  }
+        &::-webkit-scrollbar-thumb {
+            background-color: var(--cover);
+            border-radius: 4px;
+        }
 
-  li {
-    border-radius: 8px;
-    padding: 15px;
-    min-width: 30%;
-  }
+        li {
+            border-radius: 8px;
+            padding: 15px;
+            min-width: 30%;
+        }
 }
 
 `

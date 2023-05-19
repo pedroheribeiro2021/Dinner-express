@@ -28,6 +28,7 @@ export const ModalCreateRestaurant = () => {
             if (isValid) {
                 createRestaurants(data)
                 closeModal()
+                window.location.reload()
                 console.log("CNPJ válido")
             } else {
                 toast("CNPJ inválido")
