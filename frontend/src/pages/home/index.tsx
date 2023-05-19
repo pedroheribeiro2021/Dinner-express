@@ -3,19 +3,15 @@ import cover from "../../assets/dinner wallpapaer.jpg"
 import { Header } from "../../components/header"
 import { useRestaurantContext } from "../../contexts/restaurantsContext"
 import { HomeStyle } from "./style"
-import { useModalContext } from "../../contexts/modalContext"
-import ReactModal from "react-modal"
 import { ModalCreateRestaurant } from "../../components/modal create restaurant"
 
 export const Home = () => {
     const { getAllRestaurants, restaurants } = useRestaurantContext()
 
-    const { isCreateRestaurantModalOpen, setCreateRestaurantModalOpen } = useModalContext()
+    const [expandedRestaurant, setExpandedRestaurant] = useState(null)
     
     useEffect(() => {
-        (async () => {
-          await getAllRestaurants()
-        })()
+        getAllRestaurants()
       }, [])
 
     return (
@@ -31,37 +27,44 @@ export const Home = () => {
             <h3 className="subtitle2">Lanchonetes, restaurantes, sorveterias e muito mais para matar sua fome.</h3>
             <div className="restaurants-hub">
                 <img className="cover" src={cover} alt=""/>
-                <button className="register-restaurant" onClick={() => setCreateRestaurantModalOpen(true)}>Cadastrar restaurante</button>
-                <ul>
+                <ul className="restaurants-list">
                     {
                         restaurants.length > 0 ? restaurants.map((restaurant: any, i: number) => (
                             <li key={i}>
-                                <h4>{restaurant.name}</h4>
-                                <p>{restaurant.type}</p>
-                                <h5>Horário de funcionamento:</h5>
-                                <ul className="operating-time">
+                                {expandedRestaurant !== restaurant && (
+                                    <>
+                                        <h4>{restaurant.name}</h4>
+                                        <p>{restaurant.type}</p>
+                                    </>
+                                )}
                                 {
-                                    restaurant.operatingTimes.map((times: any) => 
-                                        (
-                                            <>
-                                            <li>
-                                               ⋅ {times.dayOfWeek}
-                                            {/* </li> */}
-                                            {/* <li> */}
-                                                ⋅ De {times.openingTime} 
-                                            {/* </li> */}
-                                            {/* <li> */}
-                                                ⋅ Às {times.closingTime}
-                                            </li>
-                                            </>
-
-                                        )
-                                    )
+                                    expandedRestaurant === restaurant && (
+                                        <>
+                                        <h5>Horário de funcionamento:</h5>
+                                          <ul className="operating-time">
+                                            <button onClick={() => setExpandedRestaurant(null)}>Voltar</button>
+                                            {restaurant.operatingTimes.map((times: any, i: number) => (
+                                                <li key={times.dayOfWeek}>
+                                                {times.dayOfWeek} ⋅ De {times.openingTime} ⋅ Às {times.closingTime}
+                                              </li>
+                                            ))}
+                                          </ul>
+                                        </>
+                                      )
                                 }
-                                </ul>
                                 <div className="card-buttons">
-                                    <button>Verificar Horários</button>
-                                    <button>Entrar em contato</button>
+                                {expandedRestaurant !== restaurant && (
+                                    <>
+                                    <button onClick={() => setExpandedRestaurant(restaurant)}>
+                                        Horário de funcionamento
+                                    </button>
+                                    <a
+                                        target="_blank"
+                                        href={`https://wa.me/55${restaurant.cellPhone}?text=Ol%C3%A1,%20Olá%20gostaria%20de%20fazer%20o%20uma%20reserva`}
+                                        rel="noreferrer"
+                                    >Entrar em contato</a>
+                                    </>
+                                )}
                                 </div>
                             </li>
                         )) : (

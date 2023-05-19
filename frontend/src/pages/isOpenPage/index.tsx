@@ -3,13 +3,15 @@ import { Header } from "../../components/header"
 import { useRestaurantContext } from "../../contexts/restaurantsContext"
 import cover from "../../assets/isopencover.jpeg"
 import { IsOpenPageStyle } from "./style"
+import { useNavigate } from "react-router"
 
 
 export const IsOpenPage = () => {
     const { statusRestaurant, isOpenRestaurants, weeksDay, restaurants } = useRestaurantContext()
+
+  const navigate = useNavigate()
     
     const {
-        control,
         register, 
         handleSubmit,
         formState: {errors},
@@ -25,27 +27,28 @@ export const IsOpenPage = () => {
         <Header/>
         <IsOpenPageStyle>
             <form onSubmit={handleSubmit(submit)}>
-                <label htmlFor="">Nome</label>
+                <div className="head-container">
+                    <label htmlFor="">Nome</label>
+                    <button onClick={() => {navigate("/")}}>Voltar</button>
+                </div>
                     <select {...register("name")}>
                         {
-                            restaurants.map((rest:any) => (
-                                <option value={rest.name}>{rest.name}</option>
+                            restaurants.map((rest:any, index:number) => (
+                                <option key={index} value={rest.name}>{rest.name}</option>
                             ))
                         }
-                    </select> 
-                {/* <input type="text" id="name" placeholder="" {...register("name")}/> */}
+                    </select>
                 <label htmlFor="">Dia da semana</label>
                     <select {...register(`dayOfWeek`)}>
                         {
-                            weeksDay.map((el:string) => (
-                                <option value={el}>{el}</option>
+                            weeksDay.map((day:string, index: number) => (
+                                <option key={index} value={day}>{day}</option>
                             ))
                         }
                     </select> 
                 <label htmlFor="">Horário</label>
                 <input
                     type="time"
-                    // defaultValue={field.closingTime}
                     {...register(`time`)}
                 />
                 <button id="create" type="submit">

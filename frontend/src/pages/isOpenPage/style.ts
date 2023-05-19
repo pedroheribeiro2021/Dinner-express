@@ -13,6 +13,8 @@ export const IsOpenPageStyle = styled.section`
         flex-direction: column;
         gap: 5px;
         width: 20%;
+        margin-top: 30px;
+
 
         select {
             border: 0.5px;
@@ -30,6 +32,15 @@ export const IsOpenPageStyle = styled.section`
 
         button:hover {
             font-weight: bold;
+        }
+    }
+
+    .head-container {
+        display: flex;
+        justify-content: space-between;
+
+        button {
+            font-size: 15px;
         }
     }
 

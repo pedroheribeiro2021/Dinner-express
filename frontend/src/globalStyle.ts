@@ -36,4 +36,10 @@ export const GlobalStyle = createGlobalStyle`
         border-radius: 4px;
     }
 
+    select {
+        outline: none;
+        border: none;
+        border-radius: 4px;
+    }
+
 `
