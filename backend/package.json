@@ -8,8 +8,8 @@
   "scripts": {
     "dev": "ts-node-dev --ignore-watch node_modules --cls --rs src/server.ts",
     "typeorm": "typeorm-ts-node-commonjs",
-    "build": "tsc",
-    "start": "node dist/src/server.js"
+    "start": "node dist/src/server.js",
+    "build": "tsc"
   },
   "dependencies": {
     "@types/cors": "^2.8.13",
