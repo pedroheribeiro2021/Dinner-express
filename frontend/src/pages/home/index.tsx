@@ -3,7 +3,7 @@ import cover from "../../assets/dinner wallpapaer.jpg"
 import { Header } from "../../components/header"
 import { useRestaurantContext } from "../../contexts/restaurantsContext"
 import { HomeStyle } from "./style"
-import { ModalCreateRestaurant } from "../../components/modal create restaurant"
+import { ModalCreateRestaurant } from "../../components/modal_create_restaurant"
 import React from "react"
 
 export const Home = () => {
