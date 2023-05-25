@@ -1,5 +1,4 @@
 node_modules
-<<<<<<< HEAD
-=======
 migrations
->>>>>>> f6c0f0e2d69a04a2000602ec7296241d2f54317a
+.env
+dist/
